@@ -1,0 +1,122 @@
+<body style="background-color:cornsilk;width: 100vw; height: 100vh;">
+<div class="body">
+  <div>
+    <h1 class="flightname">SPK Flight!</h1>
+  </div>
+
+  <form [formGroup]="flightform" (ngSubmit)="onSubmit(flightform.value)">
+    <div class="form">
+      Full Name<br><input formControlName="fullName" class="input" placeholder="กรุณากรอกชื่อ">
+      <span style="color: red;  font-size: 15px;" *ngIf="flightform.hasError('minlength','fullName')">กรุณากรอกชื่อของคุณ อย่างน้อย {{flightform.get('fullName')?.errors?.['minlength'].requiredLength}} ตัว, ต้องการอีก {{flightform.get('fullName')?.errors?.['minlength'].requiredLength - flightform.get('fullName')?.errors?.['minlength'].actualLength}} ตัว</span>
+    </div>
+    <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <div class="formcountry">
+      <label class="form">From</label>
+      <select formControlName="from" class="option">
+        <option value="" disabled selected>เริ่มต้น</option>
+        <option value="Thailand">Thailand</option>
+        <option value="Japan">Japan</option>
+        <option value="Korea">Korea</option>
+        <option value="Finland">Finland</option>
+        <option value="Germany">Germany</option>
+        <option value="Switzerland">Switzerland</option>
+      </select>
+    </div>
+    <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <div class="formcountry">
+      <label class="form">To</label>
+      <select formControlName="to" class="option">
+        <option value="" disabled selected>ปลายทาง</option>
+        <option value="Thailand">Thailand</option>
+        <option value="Japan">Japan</option>
+        <option value="Korea">Korea</option>
+        <option value="Finland">Finland</option>
+        <option value="Germany">Germany</option>
+        <option value="Switzerland">Switzerland</option>
+      </select>
+    </div>
+    <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <div>
+      <label class="form">Trip Type</label> <span style="color: red" *ngIf="flightform.get('type')?.errors?.['required']"><br>กรุณากรอกข้อมูล</span><br/>
+      <input class="radio" type="radio" value="One way" name="type" id="type" formControlName="type" required>
+      <label class="trip" for="type">One way</label>
+      <input class="radio" type="radio" value="Return" name="type" id="type" formControlName="type" required>
+      <label class="trip" for="type">Return</label>
+    </div>
+    <br>
+    <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <div class="pform">
+      <label class="form">Departure</label><span style="color: red" *ngIf="flightform.get('departure')?.errors?.['required']">กรุณากรอกข้อมูลวันที่ออกเดินทาง</span>
+      <input class="dateform" matInput [matDatepicker]="picker" formControlName="departure" [min]="startDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </div>
+    <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <div class="pform">
+      <label class="form">Arrival</label><span style="color: red" *ngIf="flightform.get('arrival')?.errors?.['required']">กรุณากรอกข้อมูลวันที่กลับจากการเดินทาง</span>
+      <input class="dateform" matInput [matDatepicker]="picker1" formControlName="arrival" [min]="flightform.value.departure">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </div>
+    <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <div class="pform2">
+      <label class="form">Adults</label>
+      <br>
+      <span style="color: red" *ngIf="flightform.get('adults')?.errors?.['required']">กรุณากรอกจำนวนผู้โดยสารไม่เกิน 5 ท่าน</span>
+      <span style="color: red" *ngIf="flightform.get('adults')?.errors?.['max']">ผู้โดยสารต้องไม่เกิน 5 ท่าน</span>
+      <span style="color: red" *ngIf="flightform.get('adults')?.errors?.['pattern']">กรุณากรอกข้อมูลเป็นตัวเลข</span>
+      <input class="passengerform" type="text" id="adults" formControlName="adults" value="0" required min="0" />
+    </div>
+    <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <div class="pform2">
+      <label class="form">Children</label>
+      <br>
+      <span style="color: red" *ngIf="flightform.get('children')?.errors?.['required']">กรุณากรอกจำนวนผู้โดยสารไม่เกิน 3 ท่าน</span>
+      <span style="color: red" *ngIf="flightform.get('children')?.errors?.['max']">ผู้โดยสารต้องไม่เกิน 3 ท่าน</span>
+      <span style="color: red" *ngIf="flightform.get('children')?.errors?.['pattern']">กรุณากรอกข้อมูลเป็นตัวเลข</span>
+      <input class="passengerform" type="text" id="children" formControlName="children" value="0" required min="0"/>
+    </div>
+    <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <div class="pform2">
+      <label class="form">Infants</label>
+      <br>
+      <span style="color: red" *ngIf="flightform.get('infants')?.errors?.['required']">กรุณากรอกจำนวนผู้โดยสารไม่เกิน 2 ท่าน</span>
+      <span style="color: red" *ngIf="flightform.get('infants')?.errors?.['max']">ผู้โดยสารต้องไม่เกิน 2 ท่าน</span>
+      <span style="color: red" *ngIf="flightform.get('infants')?.errors?.['pattern']">กรุณากรอกข้อมูลเป็นตัวเลข</span>
+      <input class="passengerform" type="text" id="infants" formControlName="infants" value="0" required min="0" />
+    </div>
+    <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <button type="submit" class="button" [disabled]="flightform.invalid">Submit</button>
+  </form>
+    <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="th">Full Name</th>
+        <th class="th">From</th>
+        <th class="th">To</th>
+        <th class="th">Trip Type</th>
+        <th class="th">Departure</th>
+        <th class="th">Arrival</th>
+        <th class="th">Adults</th>
+        <th class="th">Chlidren</th>
+        <th class="th">Infants</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let flight of flight">
+        <td class="td">{{ flight.fullName }}</td>
+        <td class="td">{{ flight.from }}</td>
+        <td class="td">{{ flight.to }}</td>
+        <td class="td">{{ flight.type }}</td>
+        <td class="td">{{ flight.departure.getDate() + '/' + (flight.departure.getMonth() + 1) + '/' + (flight.departure.getFullYear()) }}</td>
+        <td class="td">{{ flight.arrival.getDate() + '/' + (flight.arrival.getMonth() + 1) + '/' + (flight.arrival.getFullYear()) }}</td>
+        <td class="td">{{ flight.adults }}</td>
+        <td class="td">{{ flight.children }}</td>
+        <td class="td">{{ flight.infants }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+

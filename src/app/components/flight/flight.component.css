@@ -1,0 +1,103 @@
+.body{
+  margin: auto;
+  width: 60%;
+  padding: auto;
+}
+.flightname{
+  text-align: center;
+  padding-top: 35px;
+  font-size: 50px;
+  font-style: oblique;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: indigo;
+}
+.input{
+  width: 100%;
+  padding: 12px 12px ;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  background-color:azure;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.form{
+  font-size: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.formcountry{
+  display: inline-block;
+  width: 50%;
+}
+.passenger{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
+.passengerform{
+  width: 99%;
+  padding: 12px 12px ;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  background-color:azure;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.dateform{
+  width: 92%;
+  padding: 12px 12px ;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  background-color:azure;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.pform{
+  display: inline-block;
+  width: 50%;
+}
+.pform2{
+  display: inline-block;
+  width: 33.3%;
+}
+.option{
+  color: black;
+  background-color:azure;
+  border-radius: 5px 5px;
+  width: 99%;
+  padding: 12px 12px;
+  margin: 16px 0;
+}
+.button{
+  width: 100%;
+  margin: 12px 0;
+  padding: 10px;
+  color: aliceblue;
+  background-color: royalblue;
+  border-radius: 7px 7px;
+}
+.radio{
+  height: 20px;
+  width: 20px;
+}
+.trip{
+  padding: 4px;
+}
+.table, .td, .th {
+  border: 1px solid #ddd;
+}
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+.th, .td {
+  height: 80px;
+  padding: 3px;
+}
+.th{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+}
+.td{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
